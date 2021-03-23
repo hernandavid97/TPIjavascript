@@ -6,6 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Salgamos!: Tus mejores noches</title>
   <link rel="stylesheet" href="estilos.css">
+  <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
 </head>
 <body style="padding: 0px; margin: 0px;">
   <div class="contPrim">
@@ -28,14 +29,15 @@
       <div id="contterc" class="contterc">
         <div class="tarjMisDesc" id="tarjCuenta">
           <h2 class="textCenter ma-0">Cuenta</h2>
+          <p id="estadoProd"></p> 
           <div>
             <input type="number" placeholder="Codigo de Producto" id="inCodigoProd">
             <input type="number" id="inCantProd" placeholder="Cantidad">
             <input type="button" value="Agregar" id="btnAgregar">
           </div>     
-          <div id="divCuenta" class="descuento"></div>
+          <div id="divCuenta"></div>
           <div>
-          </div>
+          <span>Monto Total:</span><span id="totalCuenta">0</span>
         </div>            
       </div>    
     </div>         

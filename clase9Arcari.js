@@ -38,6 +38,8 @@ dtosdisp.push(new Descuento("HHpizza",0.50, 1, 0))
 
 let misDescuentos=[]
 
+let cuenta = []
+
 
 //Declaración de funciones----------------------------------
 
@@ -66,25 +68,18 @@ function selectDesc(misdesc, cod){
   return estado
 }
 
-function ingresarCuenta() {
+function ingresarCuenta(prodsel, cant) {
   //Esta función permite al usuario cargar que productos consumió
-  let cuenta = []
-  let opc = true
-  let prodsel = -1
-  function Prod(producto, cantidad){this.producto = producto, this.cantidad=cantidad}
-  while(opc){
-    prodsel = parseInt(prompt("ingrese el codigo del producto que desea agregar a la cuenta"))    
-    while(prodsel > listaprod.length || !prodsel){
-      prodsel = parseInt(prompt("codigo invalido, ingrese el codigo del producto que desea agregar a la cuenta"))
+  let estado  
+  function Prod(producto, cantidad){this.producto = producto, this.cantidad=cantidad}  
+    if(prodsel > listaprod.length || !prodsel || prodsel < 1){
+      estado = "Codigo de producto invalido"
+      return estado
+    }else{    
+    cuenta.push(new Prod(prodsel, cant))       
+    muestraCuenta()
+    return estado
     }
-    let cant = parseInt(prompt("ingrese la cantidad"))
-    while(cant < 0 || !cant){
-      cant = parseInt(prompt("ingrese la cantidad"))
-    }
-    cuenta.push(new Prod(prodsel, cant))
-    opc = confirm("agrega otro producto?")
-  }
-  return cuenta
 }
 
 function usarDescuento(misdesc){
@@ -217,15 +212,7 @@ function muestraMisDesc() {
     doc.innerHTML=""    
     for(item of misDescuentos){
       let cont = document.createElement("div")
-      cont.className="descuento"
-      // let filtrado = listaprod.filter((e)=>e.id == item.producto)  
-      // cont.innerHTML= cont.innerHTML +
-      // ` <tr>
-      //   <td>${filtrado[0].nombre}</td>
-      //   <td>${item.porcentaje*100}%</td>
-      //   <td>${item.codigo}</td>
-      //   </tr>     
-      //  `
+      cont.className="descuento"  
       let filtrado = listaprod.filter((e)=>e.id == item.producto)  
       cont.innerHTML= cont.innerHTML +
       `   <span><b>${item.porcentaje*100}%</b> de descuento en </span>
@@ -241,38 +228,59 @@ function muestraMisDesc() {
 
 
 function setEstadoDesc() {
+  //muestra el estado de error al agregar un descuento
   let domEstado = document.getElementById("estadoDesc")
   if(estadoDesc!=undefined){
     domEstado.innerText=estadoDesc
   }else{domEstado.innerText=""}
 }
 
-// function muestraCuenta() {
-//   //escribe en el DOM los productos agregados a la cuenta  
-//   if(misDescuentos.length > 0){
-//     let doc = document.getElementById("divCuenta")
-//     doc.innerHTML=""    
-//     for(item of cuenta){
-//       let cont = document.createElement("div")
-//       cont.className="descuento"
-//       let filtrado = listaprod.filter((e)=>e.id == item.producto)  
-//       cont.innerHTML= cont.innerHTML +
-//       `   <span><b>${item.porcentaje*100}%</b> de descuento en </span>
-//           <span><b>${filtrado[0].nombre}</b></span>
-//           <span>| codigo ${item.codigo}</span>
-//           <input type="button" value="Usar" >       
-//       `     
-//       doc.appendChild(cont)
-//     }    
-//   }
-// }
+function setEstadoProd() {
+  //muestra el estado de error al agregar un descuento
+  let domEstado = document.getElementById("estadoProd")
+  if(estadoProd!=undefined){
+    domEstado.innerText=estadoProd
+  }else{domEstado.innerText=""}
+}
+
+function muestraCuenta() {
+  //escribe en el DOM los productos agregados a la cuenta  
+  if(cuenta.length > 0){
+    let totCuenta = document.getElementById("totalCuenta")
+    totCuenta.innerHTML = 0
+    let doc = document.getElementById("divCuenta")
+    doc.innerHTML=""    
+    for(item of cuenta){
+      let cont = document.createElement("div")
+      cont.className="descuento"
+      let filtrado = listaprod.filter((e)=>e.id == item.producto)  
+      cont.innerHTML= cont.innerHTML +
+      `   <span><b>${filtrado[0].detalle}</b>: </span>
+          <span>$${filtrado[0].precio} X</span>
+          <span>${item.cantidad} => </span>
+          <span>${(filtrado[0].precio*item.cantidad)}</span>          
+          <input type="button" value="Quitar" >       
+      `     
+      doc.appendChild(cont)
+      totCuenta.innerHTML=parseInt(totCuenta.innerText) + (filtrado[0].precio*item.cantidad)
+    }    
+  }
+}
 
 //EVENTOS-------------------------------------------------
+//Evento adquirir descuento -----------
 let btnAdquirir = document.getElementById("btnAdquirir")
 let inCodigo = document.getElementById("inCodigoDesc")
 let estadoDesc
-btnAdquirir.addEventListener("click", () => {estadoDesc = selectDesc(misDescuentos, inCodigo.value); 
+btnAdquirir.addEventListener("click", () => {estadoDesc = selectDesc(misDescuentos, inCodigo.value);
 setEstadoDesc()})
+//Evento agregar producto a cuenta-------------
+let btnAgregar = document.getElementById("btnAgregar")
+let inCodigoProd = document.getElementById("inCodigoProd")
+let inCantProd = document.getElementById("inCantProd")
+let estadoProd
+btnAgregar.addEventListener("click", ()=>{estadoProd = ingresarCuenta(inCodigoProd.value, inCantProd.value); setEstadoProd()})
+
 
 
 //Ejecución del programa ---------------------------------------------
