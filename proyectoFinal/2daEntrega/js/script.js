@@ -32,7 +32,6 @@ listaprod.push(new Producto(3,"pinta",160, "Pintas cualquier variedad"))
 
 let dtosdisp=[]
 
-
 let misDescuentos=[]
 
 let cuenta = []
@@ -42,6 +41,7 @@ let dtoAplicado = new Descuento("", 0, 0,0)
 //Declaración de funciones----------------------------------
 
 function cargarDtosDisp(){
+  //Carga descuentos disponibles del local storage o en su defecto carga inicialmente los dtos disponibles
   if(localStorage.getItem("dtosdisp")){
     dtosdisp=JSON.parse(localStorage.getItem("dtosdisp"))
   }else{
@@ -53,12 +53,14 @@ function cargarDtosDisp(){
 }
 
 function guardaDtosDisp(){
+  //Guarda el estado de los descuentos disponibles, cuando se consumen se va, restando la cantidad
   localStorage.setItem("dtosdisp", JSON.stringify(dtosdisp))
 }
 
 function selecDto(ind){
+  //Selecciona el producto adquirido seleccionado para aplicar en la cuenta
   dtoAplicado = misDescuentos[ind]  
-  console.log(dtoAplicado)
+  //console.log(dtoAplicado)
   muestraCuenta()
 }
 
@@ -89,22 +91,16 @@ function selectDesc(misdesc, cod){
 }
 
 function ingresarCuenta(prodsel, cant) {
-  //Esta función permite al usuario cargar que productos consumió
-  let estado  
-  function Prod(producto, cantidad){this.producto = producto, this.cantidad=cantidad}  
-    if(prodsel > listaprod.length || !prodsel || prodsel < 1){
-      estado = "Codigo de producto invalido"
-      return estado
-    }else{   
-      if(cant > 0){
-        cuenta.push(new Prod(prodsel, cant))       
-        muestraCuenta()
-        return estado
-      }
-    }
+  //Esta función permite al usuario cargar que productos consumió    
+  function Prod(producto, cantidad){this.producto = producto, this.cantidad=cantidad}      
+  if(cant > 0){
+    cuenta.push(new Prod(prodsel, cant))       
+    muestraCuenta()        
+  }    
 }
 
 function quitarProd(indice) {
+  //Quita un producto de la cuenta
   cuenta.splice(indice,1)
   muestraCuenta()
 }
@@ -118,14 +114,14 @@ function aplicarDesc(){
       for(item of cuenta){          
         if(item.producto == filtrado[0].id){
           cant = cant + parseInt(item.cantidad)
-          console.log("cantidad: " + cant)
+          //console.log("cantidad: " + cant)
         }
       }
       if(!cant){
         cant = 0
       }
       montoDescuento = (filtrado[0].precio*cant*dtoAplicado.porcentaje)
-      console.log("monto descuento: " + montoDescuento)
+      //console.log("monto descuento: " + montoDescuento)
     }else{montoDescuento=0}
     // misDescuentos.splice(misDescuentos.indexOf(dtoAplicado),1)
     muestraMisDesc()
@@ -134,11 +130,13 @@ function aplicarDesc(){
 }
 
 function quitarDto(){
+  //quita el descuento aplicado a la cuenta (Usado cuando se paga o se desea usar otro descuento)
   dtoAplicado = new Descuento("", 0, 0,0)  
   muestraCuenta()
 }
 
 function cargaMisDesc(){
+  //Carga del local storage los descuentos adquiridos
   if(localStorage.getItem("misDescuentos")){
     let old = JSON.parse(localStorage.getItem("misDescuentos"))
     for(item of old){
@@ -148,6 +146,7 @@ function cargaMisDesc(){
 }
 
 function guardaMisDesc(){
+  //Guarda los descuentos adquiridos en local storage, para mantenerlos en la proxima sesion
   localStorage.setItem("misDescuentos", JSON.stringify(misDescuentos)) 
 
 }
@@ -229,9 +228,9 @@ function setEstadoProd() {
 }
 
 function muestraCuenta() {
-  //escribe en el DOM los productos agregados a la cuenta   
+  //escribe en el DOM los productos agregados a la cuenta, costos y descuentos aplicados  
   montoTotal = 0    
-  console.log("paso aplicar" + montoDescuento)
+  //console.log("paso aplicar" + montoDescuento)
   if(dtoAplicado.codigo!=""){
     let divDto = document.createElement("div")
     divDto.className="descuento"
@@ -287,7 +286,7 @@ function muestraCuenta() {
   }
 }
 function pagar() {
-  //calcula el vuelto y borra descuentos usados de los adquiridos
+  //calcula el vuelto y borra descuentos usados de los adquiridos, deshabilita botones que afectan al calculo de la cuenta
   let montoPagado = document.getElementById("inMontoPago").value
   let vuelto = montoPagado - montoTotal
   let spanVuelto = document.getElementById("vuelto")
@@ -295,9 +294,10 @@ function pagar() {
     spanVuelto.innerText=("Su vuelto:" +  vuelto)
     misDescuentos.splice(misDescuentos.indexOf(dtoAplicado),1)
     guardaMisDesc()
-    dtoAplicado = new Descuento("", 0, 0,0)
+    dtoAplicado = new Descuento("", 0, 0,0)    
+    document.getElementById("divDescAplicado").childNodes[0].getElementsByTagName("input")[0].disabled=true
     document.getElementById("btnAgregar").disabled=true
-    document.getElementById("btnPagar").disabled=true
+    document.getElementById("btnPagar").disabled=true    
     for(item of document.getElementById("divCuenta").childNodes){
       item.getElementsByTagName("input")[0].disabled=true
     }
@@ -309,7 +309,7 @@ function pagar() {
 function reiniciarCuenta(){
   montoTotal = 0;
   montoDescuento = 0;
-  document.getElementById("inMontoPago").value=0
+  document.getElementById("inMontoPago").value=""
   document.getElementById("vuelto").innerText=""
   document.getElementById("inCantProd").value=""
   dtoAplicado = new Descuento("", 0, 0,0)
