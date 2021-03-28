@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Salgamos!: Tus mejores noches</title>
+  <link rel="stylesheet" href="css/estilos.css">
+  <link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon">
+</head>
+<body style="padding: 0px; margin: 0px;">
+  <div class="contPrim">
+    <h1 class="textBlanco tituloPrinc ma-0" style="margin-top: 0;">Salgamos!</h1>
+    <h2 class="textBlanco tituloSec">Tus mejores noches</h2>
+    <!-- <button style="height:50px;" id="btnComenzar" class="center">Comenzar</button>    -->
+    <div class="contSec" id="contsec">     
+      <div id="contterc" class="contterc">
+        <div id="descuentos" class="tarjDescProd"></div>
+      </div>  
+      <div id="contterc" class="contterc">
+        <div class="tarjMisDesc" id="tarjMisDesc">
+          <h2 class="textCenter ma-0">Mis Descuentos</h2> 
+          <p id="estadoDesc"></p>          
+          <input type="text" placeholder="Codigo de descuento" id="inCodigoDesc">  
+          <input type="button" value="Adquirir" id="btnAdquirir">       
+          <div id="tablaMisDesc"></div>
+        </div>            
+      </div>      
+      <div id="contterc" class="contterc">
+        <div class="tarjMisDesc" id="tarjCuenta">
+          <h2 class="textCenter ma-0">Cuenta</h2>
+          <button id="btnReiniciar">reiniciar</button>
+          <p id="estadoProd"></p> 
+          <div>
+            <!-- <input type="number" placeholder="Codigo de Producto" id="inCodigoProd"> -->
+            <select name="selectProductos" id="selectProductos">
+              <option value="" selected>Seleccione un producto</option>
+            </select>
+            <input type="number" id="inCantProd" placeholder="Cantidad">
+            <input type="button" value="Agregar" id="btnAgregar">
+          </div>     
+          <div id="divCuenta"></div>
+          <div id="divDescAplicado"></div>
+          <div>
+          <span>Subtotal: $</span><span id="subTotalCuenta">0</span><br>
+          <span>Descuento Aplicado: $</span><span id="descuentoCuenta">0</span><br>
+          <span>Monto Total: $</span><span id="totalCuenta">0</span>
+          <input type="number" placeholder="Con cuanto paga" id="inMontoPago">
+          <input type="button" value="Pagar" id="btnPagar"><br>
+          <span id="vuelto"></span>
+        </div>            
+      </div>    
+    </div>         
+  </div>    
+  <script src="js/script.js"></script>
+</body>
+</html>
+
