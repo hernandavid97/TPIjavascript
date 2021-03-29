@@ -292,13 +292,13 @@ function pagar() {
   let vuelto = montoPagado - montoTotal
   let spanVuelto = document.getElementById("vuelto")
   if(vuelto >= 0){
-    spanVuelto.innerText=("Su vuelto:" +  vuelto)
+    spanVuelto.innerText=("Su vuelto:" +  vuelto)   
     if(misDescuentos.indexOf(dtoAplicado) >= 0){
       misDescuentos.splice(misDescuentos.indexOf(dtoAplicado),1)
       guardaMisDesc()
     }
     dtoAplicado = new Descuento("", 0, 0,0)    
-    if(document.getElementById("divDescAplicado".childNodes)){
+    if(document.getElementById("divDescAplicado").childNodes){
       document.getElementById("divDescAplicado").childNodes[0].getElementsByTagName("input")[0].disabled=true
     }
     document.getElementById("btnAgregar").disabled=true

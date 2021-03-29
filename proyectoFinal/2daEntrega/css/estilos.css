@@ -116,6 +116,16 @@
   border:2px solid rgb(94, 177, 77);
 }
 
+.boton:disabled{
+  background: rgb(103, 138, 108)
+}
+
+.boton:disabled:hover{
+  background: rgb(103, 138, 108);
+  border:2px solid rgba(255, 255, 255, 0);
+   color: rgb(255, 255, 255);
+}
+
 .boton-neg{
   border:2px solid rgb(60, 168, 60);
   border-radius: 15px;
@@ -133,10 +143,21 @@
   border:2px solid rgb(255, 255, 255);
 }
 
+.boton-neg:disabled{
+  background: rgb(193 193 193)
+}
+
+.boton-neg:disabled:hover{
+  background:rgb(193 193 193);
+  border: 2px solid rgb(60, 168, 60);
+  color: rgb(94, 177, 77);
+}
+
 input{
   border:solid 2px rgb(94, 177, 77); 
   border-radius: 5px;
   padding: 0;
+  max-width: 100%;
 }
 select{
   border:solid 2px rgb(94, 177, 77); 
