@@ -25,6 +25,8 @@ class Descuento {
 }
 
 //Declaración de arreglos y variables-------------------------------------
+let imagenes=[]
+
 let listaprod=[]
 listaprod.push(new Producto(1,"pizzas",400, "Pizza de  8 porciones"))
 listaprod.push(new Producto(2,"papas",310, "Papas con cheddar y panzeta"))
@@ -38,8 +40,21 @@ let cuenta = []
 let montoTotal = 0
 let montoDescuento = 0
 let dtoAplicado = new Descuento("", 0, 0,0)
+let cont = 1
 //Declaración de funciones----------------------------------
-
+function cargaImagenes(){
+  for(let i = 1; i<6; i++){
+    console.log(i)
+    imagenes.push("img/bar("+i+").jpg");    
+  }
+}
+function cambiaImagenes(){
+  document.getElementById("contPrim").style.backgroundImage = `url("${imagenes[cont]}")`
+  cont++
+  if(cont>=imagenes.length){
+    cont=0
+  }
+}
 function cargarDtosDisp(){
   //Carga descuentos disponibles del local storage o en su defecto carga inicialmente los dtos disponibles
   if(localStorage.getItem("dtosdisp")){
@@ -345,6 +360,8 @@ btnReiniciar.addEventListener("click",()=>{reiniciarCuenta()})
 
 
 //Ejecución del programa ---------------------------------------------
+cargaImagenes()
+setInterval('cambiaImagenes()',8000)
 cargarDtosDisp()
 cargaMisDesc();
 muestraDtos();
