@@ -44,7 +44,7 @@ let cont = 1
 //Declaración de funciones----------------------------------
 function cargaImagenes(){
   for(let i = 1; i<6; i++){
-    console.log(i)
+    // console.log(i)
     imagenes.push("img/bar("+i+").jpg");    
   }
 }
