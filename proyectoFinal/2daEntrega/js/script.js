@@ -200,7 +200,7 @@ function muestraMisDesc() {
       `   <span><b>${item.porcentaje*100}%</b> de descuento en </span>
           <span><b>${filtrado[0].nombre}</b></span>
           <span>| codigo ${item.codigo}</span>
-          <input type="button" value="Usar" onclick="selecDto(${misDescuentos.indexOf(item)})">       
+          <input type="button" value="Usar" class="boton" onclick="selecDto(${misDescuentos.indexOf(item)})">       
       `     
       doc.appendChild(cont)
     }    
@@ -243,7 +243,7 @@ function muestraCuenta() {
       <span><b>${dtoAplicado.porcentaje*100}%</b> de descuento en </span>
       <span><b>${filtrado[0].nombre}</b></span>
       <span>| codigo ${dtoAplicado.codigo}</span>
-      <input type="button" value="Quitar" onclick="quitarDto()">       
+      <input type="button" class="boton-neg" value="Quitar" onclick="quitarDto()">       
     `  
     document.getElementById("divDescAplicado").innerHTML=""
     document.getElementById("divDescAplicado").appendChild(divDto)
@@ -265,7 +265,7 @@ function muestraCuenta() {
           <span>$${filtrado[0].precio} x</span>
           <span>${item.cantidad} = </span>
           <span>$${(filtrado[0].precio*item.cantidad)}</span>          
-          <input type="button" value="Quitar" onclick="quitarProd(${cuenta.indexOf(item)})">       
+          <input type="button" class="boton" value="Quitar" onclick="quitarProd(${cuenta.indexOf(item)})">       
       `     
       doc.appendChild(cont)     
     }    

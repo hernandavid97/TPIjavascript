@@ -98,3 +98,47 @@
 .ma-0{
   margin: 0;
 }
+
+.boton{
+  border:2px solid rgba(255, 255, 255, 0);
+  border-radius: 15px;
+  padding:3px 10px;
+  color: rgb(255, 255, 255);
+  background: rgb(94, 177, 77);
+  text-transform:capitalize;
+  font-weight:600;
+  transition: all ease-in 0.2s;
+}
+
+.boton:hover{
+  color: rgb(94, 177, 77);
+  background: rgb(255,255,255);
+  border:2px solid rgb(94, 177, 77);
+}
+
+.boton-neg{
+  border:2px solid rgb(60, 168, 60);
+  border-radius: 15px;
+  padding:3px 10px;
+  color: rgb(94, 177, 77);
+  background: rgb(255, 255, 255);
+  text-transform:capitalize;
+  font-weight:600;
+  transition: all ease-in 0.2s;
+}
+
+.boton-neg:hover{
+  color: rgb(255, 255, 255);
+  background:rgb(94, 177, 77);
+  border:2px solid rgb(255, 255, 255);
+}
+
+input{
+  border:solid 2px rgb(94, 177, 77); 
+  border-radius: 5px;
+  padding: 0;
+}
+select{
+  border:solid 2px rgb(94, 177, 77); 
+  border-radius: 5px;
+}
