@@ -26,9 +26,9 @@ class Descuento {
 
 //Declaración de arreglos y variables-------------------------------------
 let listaprod=[]
-listaprod.push(new Producto(1,"pizza",400, "Pizza de  8 porciones"))
+listaprod.push(new Producto(1,"pizzas",400, "Pizza de  8 porciones"))
 listaprod.push(new Producto(2,"papas",310, "Papas con cheddar y panzeta"))
-listaprod.push(new Producto(3,"pinta",160, "Pintas cualquier variedad"))
+listaprod.push(new Producto(3,"pintas",160, "Pintas cualquier variedad"))
 
 let dtosdisp=[]
 
@@ -154,20 +154,21 @@ function guardaMisDesc(){
 function muestraDtos() {
   //Escribe en el DOM los Descuentos disponibles para adquirir
   let cont = document.getElementById("descuentos")
+  let filtrado
   cont.innerHTML=""
   cont.innerHTML="<h2 style='margin:0px !important;'>Descuentos disponibles</h2>"
   cont.innerHTML= cont.innerHTML + "<h3 style='margin:5px !important;'>Adquirí los codigos y usalos cuando quieras</h3>"
   for(item of dtosdisp){
+    filtrado = listaprod.filter((e)=>e.id == item.producto) 
     if(item.cantidad > 0){
-      cont.innerHTML= cont.innerHTML+`<p>· ${item.porcentaje*100}% de descuento con el codigo <b>${item.codigo}</b> | Disponibles: ${item.cantidad}</p>`
+      cont.innerHTML= cont.innerHTML+`<p>· ${item.porcentaje*100}% de descuento en <u>${filtrado[0].nombre}</u> con el codigo <b>${item.codigo}</b> | Disponibles: ${item.cantidad}</p>`
     }
   }
 }
 
 function muestraProds() {
   //Escribe en el DOM los productos del bar
-  let cont = document.createElement("div");
-  
+  let cont = document.createElement("div");  
   let select = document.getElementById("selectProductos")
   cont.id="productos"
   cont.className="tarjDescProd" 
@@ -292,10 +293,14 @@ function pagar() {
   let spanVuelto = document.getElementById("vuelto")
   if(vuelto >= 0){
     spanVuelto.innerText=("Su vuelto:" +  vuelto)
-    misDescuentos.splice(misDescuentos.indexOf(dtoAplicado),1)
-    guardaMisDesc()
+    if(misDescuentos.indexOf(dtoAplicado) >= 0){
+      misDescuentos.splice(misDescuentos.indexOf(dtoAplicado),1)
+      guardaMisDesc()
+    }
     dtoAplicado = new Descuento("", 0, 0,0)    
-    document.getElementById("divDescAplicado").childNodes[0].getElementsByTagName("input")[0].disabled=true
+    if(document.getElementById("divDescAplicado".childNodes)){
+      document.getElementById("divDescAplicado").childNodes[0].getElementsByTagName("input")[0].disabled=true
+    }
     document.getElementById("btnAgregar").disabled=true
     document.getElementById("btnPagar").disabled=true    
     for(item of document.getElementById("divCuenta").childNodes){
@@ -330,7 +335,7 @@ let btnAgregar = document.getElementById("btnAgregar")
 let inCodigoProd = document.getElementById("selectProductos")
 let inCantProd = document.getElementById("inCantProd")
 let estadoProd
-btnAgregar.addEventListener("click", ()=>{estadoProd = ingresarCuenta(inCodigoProd.value, inCantProd.value); setEstadoProd()})
+btnAgregar.addEventListener("click", ()=>{if(inCodigoProd.value!=-1){estadoProd = ingresarCuenta(inCodigoProd.value, inCantProd.value); setEstadoProd()}})
 //Evento Pagar
 let btnPagar= document.getElementById("btnPagar")
 btnPagar.addEventListener("click",() => {pagar()})

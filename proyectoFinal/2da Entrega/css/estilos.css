@@ -3,23 +3,32 @@
 }
 
 .tarjDescProd{
-  display: inline;
-  max-width:100%;
+  display: inline;  
   background-color: rgba(158, 221, 145,0.95);
   box-shadow: 0 3px 5px -1px rgba(0,0,0,.2),0 6px 10px 0 rgba(0,0,0,.14),0 1px 18px 0 rgba(0,0,0,.12)!important;
   border-radius: 25px;
   padding: 15px;
-  margin:15px;
+  margin-bottom:15px;
 }
 .contSec{
-  display: flex;
-  width: 100%;
+  display: flex; 
   overflow: auto;
   flex-direction: row;
   align-content: space-between;
   justify-content: space-around;  
   position: relative;
 }
+
+.contSec::-webkit-scrollbar{
+  width: 7px;
+  background:none ;
+}
+
+.contSec::-webkit-scrollbar-thumb{
+  background:rgba(158, 221, 145,0.95);
+  border-radius: 2px;
+}
+
 .contPrim{
   display: flex;
   flex-direction: column;
@@ -28,9 +37,7 @@
   background-image: url("../img/bar.jpg");
   background-position: center center;
 	background-size: cover;
-  position: relative;
-  /* padding-bottom: 15px;
-  padding-top: 15px; */
+  position: relative; 
 	background-repeat: no-repeat;
 }
 
@@ -63,19 +70,15 @@
 
 .contterc{
   display: flex;
-  width: 40%;
   flex-direction: column;
-  /* align-content: space-between; */
   justify-content: space-between;  
   height: fit-content;
 }
 
 .tarjMisDesc{
   background-color: rgba(240, 255, 255,0.9);
-  max-width: 95%;
-  margin: 0 15px;
+  margin: 0 0 15px 0 ;
   padding: 15px;
-  /* height: 95%; */
   border-radius: 25px;
 }
 
