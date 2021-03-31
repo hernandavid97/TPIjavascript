@@ -1,0 +1,166 @@
+*{
+  font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.tarjDescProd{
+  display: inline;  
+  background-color: rgba(158, 221, 145,0.95);
+  box-shadow: 0 3px 5px -1px rgba(0,0,0,.2),0 6px 10px 0 rgba(0,0,0,.14),0 1px 18px 0 rgba(0,0,0,.12)!important;
+  border-radius: 25px;
+  padding: 15px;
+  margin-bottom:15px;
+}
+.contSec{
+  display: flex; 
+  overflow: auto;
+  flex-direction: row;
+  align-content: space-between;
+  justify-content: space-around;  
+  position: relative;
+}
+
+.contSec::-webkit-scrollbar{
+  width: 7px;
+  background:none ;
+}
+
+.contSec::-webkit-scrollbar-thumb{
+  background:rgba(158, 221, 145,0.95);
+  border-radius: 2px;
+}
+
+.contPrim{
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100vh;
+  background-image: url("../img/bar(5).jpg");
+  background-position: center center;
+	background-size:cover;
+  position: relative; 
+	background-repeat: no-repeat;
+  transition: all ease-in-out 2s;
+}
+
+.textBlanco{
+  color: white;
+  position: relative;
+}
+
+.tituloPrinc{
+  text-align: center;
+  font-size: 50px;
+  font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  margin: 0;
+  font-weight: bold;
+  text-decoration: underline blue;
+}
+
+.tituloSec{
+  text-align: center;
+  font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-weight: bold;
+  font-size: 35px;
+  margin: 5px 0px 25px 0px;
+}
+
+.center{
+  padding: 0px 40px;
+  margin: 0 auto;
+}
+
+.contterc{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;  
+  height: fit-content;
+}
+
+.tarjMisDesc{
+  background-color: rgba(240, 255, 255,0.9);
+  margin: 0 0 15px 0 ;
+  padding: 15px;
+  border-radius: 25px;
+}
+
+.descuento{
+  background-color: rgb(255, 255, 255);
+  max-width: 100%;
+  margin: 15px;
+  padding: 15px;
+  border-radius: 10px;
+  box-shadow: 0 3px 5px -1px rgba(0,0,0,.2),0 6px 10px 0 rgba(0,0,0,.14),0 1px 18px 0 rgba(0,0,0,.12)!important;
+}
+
+.textCenter{
+  text-align: center;
+}
+
+.ma-0{
+  margin: 0;
+}
+
+.boton{
+  border:2px solid rgba(255, 255, 255, 0);
+  border-radius: 15px;
+  padding:3px 10px;
+  color: rgb(255, 255, 255);
+  background: rgb(94, 177, 77);
+  text-transform:capitalize;
+  font-weight:600;
+  transition: all ease-in 0.2s;
+}
+
+.boton:hover{
+  color: rgb(94, 177, 77);
+  background: rgb(255,255,255);
+  border:2px solid rgb(94, 177, 77);
+}
+
+.boton:disabled{
+  background: rgb(103, 138, 108)
+}
+
+.boton:disabled:hover{
+  background: rgb(103, 138, 108);
+  border:2px solid rgba(255, 255, 255, 0);
+   color: rgb(255, 255, 255);
+}
+
+.boton-neg{
+  border:2px solid rgb(60, 168, 60);
+  border-radius: 15px;
+  padding:3px 10px;
+  color: rgb(94, 177, 77);
+  background: rgb(255, 255, 255);
+  text-transform:capitalize;
+  font-weight:600;
+  transition: all ease-in 0.2s;
+}
+
+.boton-neg:hover{
+  color: rgb(255, 255, 255);
+  background:rgb(94, 177, 77);
+  border:2px solid rgb(255, 255, 255);
+}
+
+.boton-neg:disabled{
+  background: rgb(193 193 193)
+}
+
+.boton-neg:disabled:hover{
+  background:rgb(193 193 193);
+  border: 2px solid rgb(60, 168, 60);
+  color: rgb(94, 177, 77);
+}
+
+input{
+  border:solid 2px rgb(94, 177, 77); 
+  border-radius: 5px;
+  padding: 0;
+  max-width: 100%;
+}
+select{
+  border:solid 2px rgb(94, 177, 77); 
+  border-radius: 5px;
+}
