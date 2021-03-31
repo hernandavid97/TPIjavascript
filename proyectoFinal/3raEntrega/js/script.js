@@ -40,7 +40,8 @@ let cuenta = []
 let montoTotal = 0
 let montoDescuento = 0
 let dtoAplicado = new Descuento("", 0, 0,0)
-let cont = 1
+let cont = 0
+let contpre = 0
 //Declaración de funciones----------------------------------
 function cargaImagenes(){
   for(let i = 1; i<6; i++){
@@ -56,11 +57,11 @@ function cambiaImagenes(){
   }
 }
 
-function precargaImagenes(){  
-  for(im in imagenes){
-  document.getElementById("invisible").style.backgroundImage = `url("${im}")`
-  }
-  document.getElementById("invisible").style.display = "none"
+function precargaImagenes(){ 
+  if(cont<=imagenes.length){
+  document.getElementById("invisible").style.backgroundImage = `url("${imagenes[cont]}")`
+  contpre++
+  }  
 }
 
 function cargarDtosDisp(){
@@ -369,7 +370,7 @@ btnReiniciar.addEventListener("click",()=>{reiniciarCuenta()})
 
 //Ejecución del programa ---------------------------------------------
 cargaImagenes()
-precargaImagenes()
+setInterval("precargaImagenes()", 2000)
 setInterval('cambiaImagenes()',8000)
 cargarDtosDisp()
 cargaMisDesc();
