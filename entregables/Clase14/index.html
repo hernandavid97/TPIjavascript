@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Salgamos!: Tus mejores noches</title>
+  <link rel="stylesheet" href="css/estilos.css">
+  <link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon">
+  <link rel="stylesheet" href="css/bootstrap.min.css">
+  <link rel="stylesheet" href="css/bootstrap-grid.min.css">
+</head>
+<body style="padding: 0px; margin: 0px;">
+  <div class="contPrim container-fluid" id="contPrim">
+    <div class="row">
+      <h1 class="textBlanco tituloPrinc ma-0 col-12" style="margin-top: 0;">Salgamos!</h1>
+      <h2 class="textBlanco tituloSec col-12">Tus mejores noches</h2>
+    </div> 
+    <div class="contSec row" id="contsec">     
+      <div id="contterc" class="contterc col-xs-11 col-md-4">
+        <div id="descuentos" class="tarjDescProd"></div>
+      </div>  
+      <div  class="contterc col-xs-11 col-md-4">
+        <div class="tarjMisDesc" id="tarjMisDesc">
+          <h2 class="textCenter ma-0">Mis Descuentos</h2> 
+          <p id="estadoDesc"></p>          
+          <input type="text" placeholder="Codigo de descuento" id="inCodigoDesc" class="mb-2">  
+          <input type="button" value="Adquirir" id="btnAdquirir" class="boton">       
+          <div id="tablaMisDesc"></div>
+        </div>            
+      </div>      
+      <div  class="contterc col-xs-11 col-md-4">
+        <div class="tarjMisDesc container-fluid" id="tarjCuenta">
+          <div class="row">
+            <div class="cols-12 justify-content-center d-flex">
+              <h2 class="textCenter ma-0 d-inline-block me-2">Cuenta</h2>
+              <input type="button" id="btnReiniciar" class="boton" value="reiniciar"></input>
+            </div>
+            <p id="estadoProd"></p>            
+          </div>
+          <div class="row align-items-center">
+            <div class="col-7 p-0">
+              <select name="selectProductos" id="selectProductos" style="max-width: 100%;">
+                <option value="-1" selected>Seleccione un producto</option>
+              </select>
+            </div>
+            <div class="col-5 col-md-2 p-1">
+              <input type="number" id="inCantProd" style="max-width: 100%;" placeholder="Cantidad">
+            </div>          
+            <div class="col-10 col-md-3"><input type="button" value="Agregar" id="btnAgregar" class="boton"></div>
+          </div>     
+          <div class="row">
+            <div clas="col-12" id="divCuenta"></div>
+          </div>
+          <div style="border-bottom: solid 1px #c5c0c0;"></div>
+          <div class="row">            
+            <div class="col-12" id="divDescAplicado"></div>
+          </div>
+          <div>
+            <div class="row">
+              <div class="col-12"><span>Subtotal: ARS $</span><span id="subTotalCuenta">0</span><br></div>
+              <div class="col-12"><span>Descuento Aplicado: ARS $</span><span id="descuentoCuenta">0</span><br></div>
+              <div class="col-12"><span>Monto Total: ARS $</span><span id="totalCuenta">0</span></div>            
+            <div class="col-12">
+              <input type="number" class="mb-2" placeholder="Con cuanto paga" id="inMontoPago">
+              <input type="button" value="Pagar" id="btnPagar" class="boton"><br>
+            </div>
+            <div class="col-12"><span id="vuelto"></span></div>            
+          </div>
+          <div class="row">
+            <div class="col-12 my-2">
+              <input type="button" value="monedas de turista" id="btnDivisas" class="boton mb-2">
+              <div id="divisas"  style="display: none;">
+                <select class="mb-2" name="convDivisas" id="SLconvDivisas">
+                  <option value="">Seleccione su moneda</option>
+                </select>
+                <div id="divCambioDivisas"></div>          
+                <div id="conversor" class="container">
+                  <div class="row">
+                    <div class="col-6 px-0"><span id="codInDivisa">su moneda</span>
+                  </div>
+                  <div class="col-6 px-0">
+                    <input type="text" id="monConversor">
+                  </div>
+                  <div class="col-6 px-0">
+                    <span>ARS </span>
+                  </div>
+                  <div class="col-6 px-0">
+                    <input type="text" id="arsConversor">
+                  </div>
+                  </div>
+                </div>      
+              </div>
+            </div>            
+          </div>
+          </div>            
+        </div>   
+      </div>         
+    </div> 
+    <div id="invisible" style="height: 1px; width: 1px;"></div>
+  </div>   
+  <script
+src="https://code.jquery.com/jquery-3.6.0.min.js"
+integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
+crossorigin="anonymous"></script>
+  <script src="js/script.js"></script>
+</body>
+</html>
+
