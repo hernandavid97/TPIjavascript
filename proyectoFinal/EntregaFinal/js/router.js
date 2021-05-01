@@ -3,6 +3,7 @@ function domHome(home, login, register){
   $(login).css("display", "none")
   $(register).css("display", "none")
   $("#bienvenido").text(`Bienvenido ${app.getUsuarioActual().nombre} ${app.getUsuarioActual().apellido}`)
+  $("#cerrarSesion").fadeIn().attr("value", "Cerrar Sesiòn")
   $("#cerrarSesion").fadeIn()
   $("#404").css("display", "none")
 }
