@@ -3,6 +3,10 @@
   box-sizing: border-box;
 }
 
+*:focus-visible{
+  outline:0px;
+}
+
 .tarjDescProd{
   display: inline;  
   background-color: rgba(158, 221, 145,0.95);
@@ -161,6 +165,7 @@ input{
   padding: 0;
   max-width: 100%;
 }
+
 select{
   border:solid 2px rgb(94, 177, 77); 
   border-radius: 5px;
@@ -170,4 +175,21 @@ select{
   background-color:rgb(243, 204, 204);
   color: red;
   text-align: center;
+}
+
+.success{
+  background-color: rgb(193 255 192 / 0%);
+  color: #042fff;
+  text-align: center;
+  font-weight: bolder;
+}
+
+.border-red{
+  border-color: red;
+}
+
+.back-transparent{
+background-color: #59a2598f;
+border-radius: 25px;
+padding:10px;
 }

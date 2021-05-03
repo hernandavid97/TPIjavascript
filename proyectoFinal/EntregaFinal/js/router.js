@@ -1,4 +1,4 @@
-function domHome(home, login, register){
+function domHome(home, login, register){ // Dibuja en el DOM los elementos necesarios para utilizar el home y oculta el resto
   $(home).fadeIn()
   $(login).css("display", "none")
   $(register).css("display", "none")
@@ -8,7 +8,7 @@ function domHome(home, login, register){
   $("#404").css("display", "none")
 }
 
-function domLogin(home, login, register){  
+function domLogin(home, login, register){   // Dibuja en el DOM los elementos necesarios para utilizar el login y oculta el resto
   $(home).css("display", "none")
   $(login).fadeIn()
   $(register).css("display", "none")
@@ -17,7 +17,7 @@ function domLogin(home, login, register){
   $("#404").css("display", "none")
 }
 
-function domRegister(home, login, register){
+function domRegister(home, login, register){ // Dibuja en el DOM los elementos necesarios para utilizar el registro de usuarios y oculta el resto
   $(home).css("display", "none")
   $(login).css("display", "none")
   $(register).fadeIn()
@@ -32,7 +32,10 @@ const routes=[
   {path:'/register', action:"register"}
 ]
 
-const ErrorRouter = (domError) => {
+const ErrorRouter = (domError) => { // Dibuja en el DOM los elementos necesarios para indicar un error con la ruta seleccionada
+  $("#home").css("display", "none")
+  $("#login").css("display", "none")
+  $("#register").css("display", "none")
   $(domError).append('<div id="404" class="align-items-center" style="display:none;"><h2 style="width:100%" class="error">Error 404</h2> <a href="#/"><input type="button" class="boton" value="ir a login"></input></a></div>');
   
 }
@@ -49,25 +52,22 @@ const router = () => {
   // LLAMAMOS AL MÈTODO CORRESPONDIENTE PARA LA ACCIÒN ENCONTRADA
   switch (action) {
     case 'home':      
-      if(app.getUsuarioActual()==null){
+      if(app.getUsuarioActual()==null){ //redirecciona al login si no hay un usuario logueado
         window.location= "#/"
       }
-      domHome("#home", "#login", "#register")      
-      ejecutar()
+      domHome("#home", "#login", "#register") //dibuja el DOM de home     
+      ejecutar() //ejecuta las funciones inicializadoras del home
       break;
     case 'login':  
-      if(app.getUsuarioActual()!=null){
+      if(app.getUsuarioActual()!=null){ //si el usuario esta logueado lo redirige al home, para llegar al loguin debe cerrar sesion
         window.location= "#/home"
       }
-      domLogin("#home", "#login", "#register")
+      domLogin("#home", "#login", "#register") // dibuja el DOM de login
       break;
     case 'register':
-      domRegister("#home", "#login", "#register")
+      domRegister("#home", "#login", "#register") //dibuja el DOM de register
       break;
-    default:
-      $(home).css("display", "none")
-      $(login).css("display", "none")
-      $(register).css("display", "none")
+    default: //dibuja en el DOM el error y oculta el resto de elementos      
       ErrorRouter('#contsec')
       $("#404").fadeIn()
       break;

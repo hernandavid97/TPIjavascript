@@ -4,7 +4,7 @@ class UserModel {
     
   }
   
-  guardarUsuarios() {
+  guardarUsuarios() { // guarda en el local storage el arreglo de usuarios registrados
     localStorage.setItem('usuarios', JSON.stringify(this.usuarios)); //guarda los usuarios en localstorage
   }
 
@@ -33,16 +33,16 @@ class UserModel {
     return (this.usuarios.find((item)=>{if(item.user == us){return item}}))
   }
 
-  actualiza(users){
+  actualiza(users){ // actualiza el local storage con un nuevo arreglo de usuarios registrados
     this.usuarios = users
     this.guardarUsuarios()
   }
 
-  setUserActual(user){
+  setUserActual(user){ // setea en el session storage el usuario logueado actual
     sessionStorage.setItem("userActual", JSON.stringify(user))  
   }
 
-  getUserActual(){
+  getUserActual(){ // devuelve del session storage el usuario logueado actual
     return JSON.parse(sessionStorage.getItem("userActual")) 
   }
 }

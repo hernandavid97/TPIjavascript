@@ -265,6 +265,40 @@ function reiniciarCuenta(){
 //================================================================
                           //evento registrarse
 //================================================================
+
+
+$("#RInNombre").on("keyup", ()=>{
+  if($("#RInNombre").val().length<1){
+    $("#RInNombre").attr("class", "border-red")
+  }else{
+    $("#RInNombre").attr("class", "")
+  }
+})
+
+$("#RInApellido").on("keyup", ()=>{
+  if($("#RInApellido").val().length<1){
+    $("#RInApellido").attr("class", "border-red")
+  }else{
+    $("#RInApellido").attr("class", "")
+  }
+})
+
+$("#Ruser").on("keyup", ()=>{
+  if($("#Ruser").val().length<5){
+    $("#Ruser").attr("class", "border-red")
+  }else{
+    $("#Ruser").attr("class", "")
+  }
+})
+
+$("#Rpass").on("keyup", ()=>{
+  if($("#Rpass").val().length<5){
+    $("#Rpass").attr("class", "border-red")
+  }else{
+    $("#Rpass").attr("class", "")
+  }
+})
+
 $("#BtnRegistrarse").on("click",()=>{app.registrar()})
 $("#Ruser").on("keyup",(e)=>{if(e.keyCode == 13){app.registrar()}})
 $("#Rpass").on("keyup",(e)=>{if(e.keyCode == 13){app.registrar()}})
@@ -277,6 +311,6 @@ $("#BtnSesion").on("click",()=>app.login())
 $("#pass").on("keyup",(e)=>{if(e.keyCode == 13){app.login()}})
 $("#user").on("keyup",(e)=>{if(e.keyCode == 13){app.login()}})
 //================================================================
-                          //evento login
+                          //evento cerrar sesion
 //================================================================
 $("#cerrarSesion").click(()=>{sessionStorage.removeItem("userActual"); reiniciarCuenta(); window.location="#/"})
