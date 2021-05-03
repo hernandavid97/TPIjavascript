@@ -1,44 +1,9 @@
-function domHome(home, login, register){ // Dibuja en el DOM los elementos necesarios para utilizar el home y oculta el resto
-  $(home).fadeIn()
-  $(login).css("display", "none")
-  $(register).css("display", "none")
-  $("#bienvenido").text(`Bienvenido ${app.getUsuarioActual().nombre} ${app.getUsuarioActual().apellido}`)
-  $("#cerrarSesion").fadeIn().attr("value", "Cerrar Sesiòn")
-  $("#cerrarSesion").fadeIn()
-  $("#404").css("display", "none")
-}
-
-function domLogin(home, login, register){   // Dibuja en el DOM los elementos necesarios para utilizar el login y oculta el resto
-  $(home).css("display", "none")
-  $(login).fadeIn()
-  $(register).css("display", "none")
-  $("#bienvenido").text(``)
-  $("#cerrarSesion").css("display", "none")
-  $("#404").css("display", "none")
-}
-
-function domRegister(home, login, register){ // Dibuja en el DOM los elementos necesarios para utilizar el registro de usuarios y oculta el resto
-  $(home).css("display", "none")
-  $(login).css("display", "none")
-  $(register).fadeIn()
-  $("#bienvenido").text(``)
-  $("#cerrarSesion").fadeIn().attr("value", "ir al login")
-  $("#404").css("display", "none")
-}
 
 const routes=[
   {path:'/home', action:"home"},
   {path:'/', action:"login"},
   {path:'/register', action:"register"}
 ]
-
-const ErrorRouter = (domError) => { // Dibuja en el DOM los elementos necesarios para indicar un error con la ruta seleccionada
-  $("#home").css("display", "none")
-  $("#login").css("display", "none")
-  $("#register").css("display", "none")
-  $(domError).append('<div id="404" class="align-items-center" style="display:none;"><h2 style="width:100%" class="error">Error 404</h2> <a href="#/"><input type="button" class="boton" value="ir a login"></input></a></div>');
-  
-}
 
 const parseLocation = () => location.hash.slice(1).toLowerCase() || '/';
 

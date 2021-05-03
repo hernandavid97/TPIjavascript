@@ -4,6 +4,7 @@ class UserView {
   }
   iniciarSesion(domEstado,callback){ //inicia sesion del usuario o escribe el error de logueo
     if(callback()){      
+      $(domEstado).html("")
       window.location="#/home";
     }else{
       $(domEstado).html("Usuario o contraseña incorrectos")

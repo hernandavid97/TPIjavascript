@@ -223,6 +223,45 @@ function reiniciarCuenta(){
   $("#divCambioDivisas").html("")
   muestraCuenta()
 }
+
+function domHome(home, login, register){ // Dibuja en el DOM los elementos necesarios para utilizar el home y oculta el resto
+  $(home).fadeIn()
+  $(login).css("display", "none")
+  $(register).css("display", "none")
+  $("#bienvenido").text(`Bienvenido ${app.getUsuarioActual().nombre} ${app.getUsuarioActual().apellido}`)
+  $("#bienvenido").fadeIn()
+  $("#cerrarSesion").fadeIn().attr("value", "Cerrar Sesion")
+  $("#cerrarSesion").fadeIn()
+  $("#404").css("display", "none")
+}
+
+function domLogin(home, login, register){   // Dibuja en el DOM los elementos necesarios para utilizar el login y oculta el resto
+  $(home).css("display", "none")
+  $(login).fadeIn()
+  $(register).css("display", "none")
+  $("#bienvenido").text(``)
+  $("#bienvenido").css("display", "none")
+  $("#cerrarSesion").css("display", "none")
+  $("#404").css("display", "none")
+}
+
+function domRegister(home, login, register){ // Dibuja en el DOM los elementos necesarios para utilizar el registro de usuarios y oculta el resto
+  $(home).css("display", "none")
+  $(login).css("display", "none")
+  $(register).fadeIn()
+  $("#bienvenido").text(``)
+  $("#bienvenido").css("display", "none")
+  $("#cerrarSesion").fadeIn().attr("value", "ir al login")
+  $("#404").css("display", "none")
+}
+const ErrorRouter = (domError) => { // Dibuja en el DOM los elementos necesarios para indicar un error con la ruta seleccionada
+  $("#home").css("display", "none")
+  $("#login").css("display", "none")
+  $("#register").css("display", "none")
+  $("#bienvenido").css("display", "none")
+  $(domError).append('<div id="404" class="align-items-center" style="display:none;"><h2 style="width:100%" class="error">Error 404</h2> <a href="#/"><input type="button" class="boton" value="ir a login"></input></a></div>');
+  
+}
 //EVENTOS-------------------------------------------------
   //Evento mostrar divisas
   $("#btnDivisas").on("click", ()=>{  
